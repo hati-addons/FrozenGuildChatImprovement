@@ -1,0 +1,9 @@
+## Interface: 30300
+## Title: FrozenGuildChatImprovement
+## Notes: Improves cross-guild chat mirrors with QoL features.
+## Author: Anatash
+## Version: 0.3
+
+FrozenGuildChatMain.lua
+FrozenGuildChat_ItemLinks.lua
+FrozenGuildChat_PlayerLinks.lua
