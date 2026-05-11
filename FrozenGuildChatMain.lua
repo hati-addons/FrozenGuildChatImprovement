@@ -30,7 +30,14 @@ function FrozenGuildChat:GetFeature(name)
         return self.features[name]
     end
     return nil
-    
+end
+
+function FrozenGuildChat:GetDB(name)
+    FrozenGuildChatDB = FrozenGuildChatDB or {}
+    if not FrozenGuildChatDB[name] then
+        FrozenGuildChatDB[name] = {}
+    end
+    return FrozenGuildChatDB[name]
 end
 
 --------------------------------------------------
