@@ -38,7 +38,13 @@ if not string.insert then
     end
 end
 
+local bannedChatFrames = {
+    ["WIM_workerFrame"] = true ---[[ @TODO(hati) fix WIM support ]]
+}
+
 function Feature:OnLogin()
+    local QueryTooltip = CreateFrame("GameTooltip")
+    
     --- Find any item=ItemId in a message
     local pattern = "%<?%[?[^%s]*item=(%d+)[^%s]*%]?>?"
 
@@ -75,7 +81,9 @@ function Feature:OnLogin()
                     for _, msgData in ipairs(messages) do
                         local msg, player, event, frame = msgData.msg, msgData.player, msgData.event, msgData.frame
                         -- Resend the original message via original frame
-                        ChatFrame_OnEvent(frame, event, msg, player, unpack(msgData.other))
+                        if frame and not bannedChatFrames[frame:GetName()] then -- Exclude banned frames for inter-com issues
+                            ChatFrame_OnEvent(frame, event, msg, player, unpack(msgData.other))
+                        end
                     end
                     -- Resetting the failure attempts after resending
                     failuresForItemId[itemId] = 0
@@ -129,7 +137,7 @@ function Feature:OnLogin()
                     other = {...},
                 })
 
-                GameTooltip:SetHyperlink("item:" .. itemId)
+                QueryTooltip:SetHyperlink("item:" .. itemId)
                 DispatchLatentResolve(itemId)
                 return true -- block message from chat as dispatched to once item is loaded
             end
