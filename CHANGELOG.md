@@ -1,3 +1,12 @@
+# v0.5
+
+- Add ChannelMute feature which allows muting chnanels with `/frozenguildchat ChannelMute <ChannelName>` and `/frozenguildchat ChannelMute list` to list all
+- there are also enable/disable cmds per feature like `/frozenguildchat <FeatureName>`
+
+# v0.4
+
+- Add class colors sharing across chats via ADDON whisper channel
+
 # v0.3.1 
 
 - Small fix to avoid duplicate messages when querying from server

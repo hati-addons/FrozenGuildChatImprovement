@@ -2,7 +2,7 @@
 ## Title: FrozenGuildChatImprovement
 ## Notes: Improves cross-guild chat mirrors with QoL features.
 ## Author: Anatash
-## Version: 0.4
+## Version: 0.5
 ## SavedVariables: FrozenGuildChatDB
 
 Libs/LibStub/LibStub.lua
