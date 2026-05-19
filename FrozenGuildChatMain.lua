@@ -95,7 +95,13 @@ SlashCmdList["FROZENGUILDCHAT"] = function(msg)
         FrozenGuildChatDB.features[msg] = not FrozenGuildChatDB.features[msg]
         FrozenGuildChat:Log(msg..(FrozenGuildChatDB.features[msg] and " enabled" or " disabled")..". ReloadUI to load proper state.")
     else
-        FrozenGuildChat:Log("Feature '" .. msg .. "' not found.")
+        local fstart,fend, fname, opts = msg:find("^([^%s]+)%s?(.*)")
+        local feature = FrozenGuildChat:GetFeature(fname)
+        if feature and feature.processcmd then
+            feature:processcmd(opts, msg)
+        else 
+            FrozenGuildChat:Log("Feature '" .. msg .. "' not found.")
+        end
     end
 end
 
