@@ -12,3 +12,4 @@ Libs/LibSerialize-1.2.1/lib.xml
 FrozenGuildChatMain.lua
 FrozenGuildChat_ItemLinks.lua
 FrozenGuildChat_PlayerLinks.lua
+FrozenGuildChat_Channels.lua
