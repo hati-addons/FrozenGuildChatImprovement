@@ -1,3 +1,7 @@
+# v0.5.1
+
+- Fixed Channels not showing until first time ChanneLMute cmd usage (now shows immediately)
+
 # v0.5
 
 - Add ChannelMute feature which allows muting chnanels with `/frozenguildchat ChannelMute <ChannelName>` and `/frozenguildchat ChannelMute list` to list all
