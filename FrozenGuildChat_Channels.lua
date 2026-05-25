@@ -7,7 +7,7 @@ function Feature:OnLogin()
     local db = FrozenGuildChat:GetDB(Feature.name)
 
     local function ShouldFilter(prefix)
-        return db.filters[prefix] or false
+        return (db.filters and db.filters[prefix]) or false
     end
 
     --- Find any cross name link
