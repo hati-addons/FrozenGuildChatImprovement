@@ -18,7 +18,8 @@ local mirrorlist = {
     "klayguild",
     "kernhund",
     "coaguild",
-    "exceedd"
+    "exceedd",
+    "Garsca"
 }
 
 local remap_mirror = function(orig_player)
