@@ -60,8 +60,6 @@ function Feature:SharePlayerClass(to_player)
     local compressed = LibDeflate:CompressDeflate(serialized)
     local encoded = LibDeflate:EncodeForWoWAddonChannel(compressed)
 
-    print(serialized)
-
     SendAddonMessage(self.message_channel, encoded, "WHISPER", to_player)
 end
 
@@ -93,10 +91,11 @@ function Feature:OnLogin()
         -- Match the full pattern: [GuildHandle][Player] msg
         local startPos, endPos, guildprefix, playername = msg:find(pattern)
 
-        -- We are returning from failure => skip and just resolve immediately
         if startPos and guildprefix and playername then
             local playerlinkname = guildprefix.."-"..playername
             FrozenGuildChat:Debug("Found cross-guild message from "..playerlinkname)
+
+            self:SharePlayerClass(playername)
 
             -- Generate player link
             local playerlink = "|c"..Feature:PlayerColorStr(playername).."|Hplayer:"..playername.."|h["..playerlinkname.."]|h|r"
